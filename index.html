@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>나는 사실 쌀국수가 먹고 싶은데</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="main">
+        <h2 id="originalText">click anywhere to enter.<br>點擊任何位置即可進入.</h2>
+	<div class="marquee" style="display: none;"> 
+    <div class="marquee-content">
+    	<img src="chicken.webp">
+        <img src="box.png">
+        <img src="glass.png">
+        <img src="pho.png">
+        <img src="tmt.png">
+        <img src="chicken.webp">
+        <img src="box.png">
+        <img src="sang.svg"><img src="chicken.webp">
+        <img src="box.png">
+        <img src="glass.png">
+        <img src="pho.png">
+        <img src="tmt.png">
+        <img src="chicken.webp">
+        <img src="box.png">
+        <img src="sang.svg">
+        <img src="chicken.webp">
+        <img src="box.png">
+        <img src="glass.png">
+        <img src="pho.png">
+        <img src="tmt.png">
+        <img src="chicken.webp">
+        <img src="box.png">
+        <img src="sang.svg">
+        <img src="glass.png">
+        <img src="pho.png">
+        <img src="tmt.png">
+        <img src="chicken.webp">
+        <img src="box.png">
+        <img src="glass.png">
+        <img src="pho.png">
+        <img src="tmt.png">
+        <img src="chicken.webp">
+        <img src="box.png">
+        <img src="glass.png">
+        <img src="pho.png">
+        <img src="tmt.png">
+    </div>
+</div>
+        <a href="random.html"><h1 id="newText">Welcome.<br>歡迎.</h1></a>
+    </div>
+
+    <audio id="backgroundAudio" src="china.mp3" loop></audio>
+    <button  id="toggleButton" class="toggle-button" style="display: none;">Pause</button>
+
+    
+    <script>
+   	const backgroundAudio = document.getElementById('backgroundAudio');
+    const toggleButton = document.getElementById('toggleButton');
+    const originalText = document.getElementById('originalText');
+    const newText = document.getElementById('newText');
+    const marquee = document.querySelector('.marquee');
+
+    let hasChanged = false;
+    let isPlaying = false;
+
+    
+    document.body.addEventListener('click', function() {
+        if (!hasChanged) {
+            
+            document.body.style.background = '#ff4d00';
+            originalText.style.display = 'none';
+            newText.style.display = 'block';
+            marquee.style.display = 'block'; 
+            backgroundAudio.play();
+            toggleButton.style.display = 'block'; 
+
+            hasChanged = true;
+        }
+    });
+
+    toggleButton.addEventListener('click', function() {
+        if (isPlaying) {
+            backgroundAudio.pause();
+            toggleButton.textContent = 'Play';
+        } else {
+            backgroundAudio.play();
+            toggleButton.textContent = 'Pause';
+        }
+        isPlaying = !isPlaying; 
+    });
+
+    </script>
+ 
+</body>
+</body>
+</html>

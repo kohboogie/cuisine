@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap');
+
+@font-face 
+{font-family: 'PPEditorialNew'; 
+    src:url('./fonts/PPEditorialNew-Regular.otf') format('woff');}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ html{
+ background: #000000;
+transition: 0.5s ease;
+        }
+ h2,#newText{ 
+    font-family:'PPEditorialNew','Noto Serif SC', serif;; 
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: yellow;
+        }
+
+#newText{
+    margin-bottom: 200px;
+    position: fixed;
+    top: 250px;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    font-size: 5em;
+    font-family:'PPEditorialNew','Noto Serif SC', serif;
+    display: none;
+    color: yellow;
+    font-family: 500;
+}
+.marquee { 
+    behavior: scroll;
+    position: fixed;
+    top: -400px;/* Adjust this value to position the marquee above newText */
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden; /* Hide overflowing content */
+}
+
+.marquee-content {
+    display: flex;
+    will-change: transform;
+    animation: marquee 50s linear infinite; 
+    transform: translateX(-20%);
+}
+
+.marquee-content img {
+    width: 400px; /* Adjust the size of the images */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 50px; /* Space between images */
+}
+
+/* Animation for marquee */
+@keyframes marquee {
+    0% {
+        transform: translateX(-20%); /* Start off-screen */
+    }
+    100% {
+        transform: translateX(-100%); /* End off-screen */
+    }
+}
+
+    .main{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);       
+        }
+
+a{
+    text-decoration: none;
+
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+    .toggle-button {
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            padding: 10px 20px; 
+            background-color: #4CAF50;
+            border-radius: 10px; 
+            border: none;
+            color: white; 
+            cursor: pointer; 
+            font-size: 1.2rem;
+            z-index: 1000; /* Ensure it's on top */
+        
+        }
+/* Hidden content styling */
+.hidden-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transform: scale(0); /* Start hidden with scale 0 */
+    transition: transform 0.7s ease-in-out;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.reveal {
+    transform: scale(5); /* Grow the content with a circular reveal */
+    border-radius: 0; /* Remove border radius to make it full screen */
+}
+
+
+ 

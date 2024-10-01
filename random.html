@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>나는 사실 쌀국수가 먹고 싶은데</title>
+	<style type="text/css">
+		@font-face {font-family: 'PPEditorialNew'; src:url('./fonts/PPEditorialNew-Regular.otf') format('woff');}
+
+		html{	
+			background-image: url(download.gif);
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+		p{
+			font-size: 1.2rem;
+		}
+		h3{
+			margin: 0;
+		}
+		.rd{       
+			display: block; 
+			margin-bottom: 200px;
+			margin-top: 100px;
+			 }
+
+		#a,#b{
+			color: #FFFF00;
+			font-weight: 600;
+			text-align: center;
+			margin: 0; 
+			padding-right: 1vw;
+			font-size: 7vw; 
+			font-family:'PPEditorialNew',"Bookman Old Style", Georgia, serif; ; letter-spacing: -0.02em}
+
+		button{
+			background-color: white; 
+			border: none;
+			border-radius: 20px;
+			color: red;  padding: 1vw 4vw 1.5vw 4vw;  text-align: center;
+			font-size: 3vw; font-family: "Bookman Old Style", Georgia, serif; font-weight: 400; }
+		button:hover{
+			background-color: black; color: white;
+
+		}
+		.lunch{
+			text-align: center; 
+			padding: 1vw 1vw 1vw 1vw;  
+			color: black; 
+			font-size: 2em; 
+			font-family: "Bookman Old Style", Georgia, serif; 
+			font-weight: 400; 
+		}
+		.bird{
+			width: 300px;
+			position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);       
+			display: flex; margin: auto;}
+		.info{
+			font-family: "Bookman Old Style", Georgia, serif; 
+			font-weight: 400; 
+		}
+		 #yumImg {
+		 	margin-top: 20px;
+  			position: absolute;
+            top: 40vh;
+            right: 30vw; /
+		 	justify-content: center;
+            display: none; }
+         #toggleMusic {
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            padding: 10px 20px; 
+            background-color: #4CAF50;
+            border-radius: 10px; 
+            color: white; 
+            cursor: pointer; 
+            font-size: 1.2rem;
+            z-index: 1000; /* Ensure it's on top */
+        }
+
+	</style>
+</head>
+<body>
+
+	<div class="lunch">Your lunch is ..<br>你的午餐..</div>
+	
+	<div class="rd">
+		<div id="a">
+			<div id="color">Hot pot<br>
+		火鍋</div>
+			<button id="stop1">Stop</button>
+			<img id="yumImg" src="yum.svg">
+		</div>
+
+		<div id="b">
+			<div id="bird">
+				<img src="download.webp" style="margin-top: 100px;">
+			</div>
+		</div>
+		</div>
+
+		<footer class="info">
+			<h3>Email</h3>
+			<p>goseozero@seoultech.ac.kr
+				<br><br><br> &copy 2024 seoyoung Koh</p>
+
+		</footer>
+	<audio id="backSnd" src="china.mp3"></audio>
+	<button id="toggleMusic">Play</button>
+
+	<script type="text/javascript">
+		window.onload = function() {
+            const audio = document.getElementById('backSnd');
+            audio.play().catch(error => {
+                console.error("Error playing audio:", error);
+            });
+        };
+        document.getElementById('stop1').onclick = function () {
+            clearInterval(foodTimer);
+            const button1 = document.getElementById('stop1');
+            button1.remove(); 
+            const yumImage = document.getElementById('yumImage');
+            yumImage.style.display = 'block'; 
+        }
+
+        // Event listener for the toggle music button
+        document.getElementById('toggleMusic').onclick = function () {
+            const audio = document.getElementById('backSnd');
+            if (audio.paused) {
+                audio.play();
+                this.textContent = "Pause"; 
+            } else {
+                audio.pause();
+                this.textContent = "Play"; 
+            }
+        }
+		var foodName = "Dim Sum<br>点心,Dumplings<br>饺子,Ma Pa Tofu<br>麻婆豆腐,Cha Siu<br>叉烧,Peking Roasted Duck<br>北京烤鴨,Chow noodle<br>炒面,Fried Rice<br>炒饭,Sichuan Pork<br>水煮肉片,Xiaolongbao<br>小笼包,Zhajiangmian<br>炸酱面,Kung Pao Chicken<br>宫保鸡丁,Sweet and Sour Pork<br>糖醋里脊,Wonton Soup<br>馄炖,Dim Sum<br>点心,Dumplings<br>饺子,Ma Pa Tofu<br>麻婆豆腐,Cha Siu<br>叉烧,Peking Roasted Duck<br>北京烤鴨,Chow noodle<br>炒面,Fried Rice<br>炒饭,Sichuan Pork<br>水煮肉片,Xiaolongbao<br>小笼包,Zhajiangmian<br>炸酱面,Kung Pao Chicken<br>宫保鸡丁,Sweet and Sour Pork<br>糖醋里脊,Wonton Soup<br>馄炖";
+
+		var foodArray = foodName.split(",");
+		var k = 0;
+		var foodTimer = setInterval(foodPrint,300);
+		function foodPrint(){
+			color.innerHTML = foodArray[k];
+			k++;
+			if(k == foodArray.length){
+				clearInterval(foodTimer);
+				k = 0;
+				setInterval(foodTimer);
+				stop1.onclick()
+			}
+		}
+
+		stop1.onclick = function(){
+			clearInterval(foodTimer);
+			const button1 = document.getElementById('stop1');
+  			button1.remove();
+  			const yumImg = document.getElementById('yumImg');
+            yumImg.style.display = 'block'; 
+		}
+	</script>
+</body>
+</html>
